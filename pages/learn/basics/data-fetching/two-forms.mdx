@@ -10,7 +10,7 @@ export const meta = {
   subtitle: 'Two Forms of Pre-rendering'
 }
 
-Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
+Next.js has two forms of pre-rendering: <Link href="/docs/[[...slug]]" as="/docs/basic-features/pages#static-generation-recommended"><a>**Static Generation**</a></Link> and <Link href="/docs/[[...slug]]" as="/docs/basic-features/pages#server-side-rendering"><a>**Server-side Rendering**</a></Link>. The difference is in **when** it generates the HTML for a page.
 
 - **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
 - **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
@@ -49,7 +49,7 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
 
 ### When to Use Static Generation v.s. Server-side Rendering
 
-We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
+We recommend using <Link href="/docs/[[...slug]]" as="/docs/basic-features/pages#static-generation-recommended"><a>**Static Generation**</a></Link> (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
 
 You can use Static Generation for many types of pages, including:
 
