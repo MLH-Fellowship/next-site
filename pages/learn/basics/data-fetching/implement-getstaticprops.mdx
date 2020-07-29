@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import Link from 'next/link'
 
 export const meta = {
   title: 'Pre-rendering and Data Fetching',
@@ -64,7 +65,7 @@ And in `pages/index.js`, import this function:
 import { getSortedPostsData } from '../lib/posts'
 ```
 
-Then call this function in `getStaticProps`. You need to return the result inside the `props` key:
+Then call this function in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>. You need to return the result inside the `props` key:
 
 ```js
 export async function getStaticProps() {
@@ -132,6 +133,6 @@ Congratulations! We’ve successfully fetched external data (from the file syste
   height={948 / 2}
 />
 
-Let’s talk about some tips for using `getStaticProps` on the next page.
+Let’s talk about some tips for using <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> on the next page.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

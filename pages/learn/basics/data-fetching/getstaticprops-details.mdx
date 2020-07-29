@@ -40,18 +40,23 @@ export async function getSortedPostsData() {
 }
 ```
 
-This is possible because `getStaticProps` runs **only on the server-side**. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
+This is possible because <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> runs **only on the server-side**. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
 
 ### Development vs. Production
 
-- In **development** (`npm run dev` or `yarn dev`), `getStaticProps` runs on _every request_.
-- In **production**, `getStaticProps` runs at _build time_.
+- In **development** (`npm run dev` or `yarn dev`), <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> runs on _every request_.
+- In **production**, <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> runs at _build time_.
 
 Because it’s meant to be run at build time, you won’t be able to use data that’s only available during request time, such as query parameters or HTTP headers.
 
 ### Only Allowed in a Page
 
-`getStaticProps` can only be exported from a **page**. You can’t export it from non-page files.
+<Link
+  href="/docs/[[...slug]]"
+  as="/docs/basic-features/data-fetching#getstaticprops-static-generation"
+>
+  <a>`getStaticProps`</a>
+</Link> can only be exported from a **page**. You can’t export it from non-page files.
 
 One of the reasons for this restriction is that React needs to have all the required data before the page is rendered.
 
@@ -59,6 +64,6 @@ One of the reasons for this restriction is that React needs to have all the requ
 
 Static Generation is **not** a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
 
-In cases like this, you can try **Server-side Rendering** or skipping pre-rendering. Let’s talk about these strategies before we move on to the next lesson.
+In cases like this, you can try <Link href="/docs/[[...slug]]" as="/docs/basic-features/pages#server-side-rendering"><a>**Server-side Rendering**</a></Link> or skipping pre-rendering. Let’s talk about these strategies before we move on to the next lesson.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

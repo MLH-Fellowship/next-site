@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import Link from 'next/link'
 
 export const meta = {
   title: 'Navigate Between Pages',
@@ -15,7 +16,7 @@ In Next.js, you use the `<Link>` React Component that wraps the `<a>` tag. `<Lin
 
 ### Using `<Link>`
 
-First, in `pages/index.js`, import the `Link` component from `next/link` by adding this line at the top:
+First, in `pages/index.js`, import the `Link` component from <Link href="/docs/[[...slug]]" as="/docs/api-reference/next/link"><a>`next/link`</a></Link> by adding this line at the top:
 
 ```js
 import Link from 'next/link'

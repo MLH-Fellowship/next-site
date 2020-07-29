@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import Link from 'next/link'
 
 export const meta = {
   title: 'Pre-rendering and Data Fetching',
@@ -56,14 +57,14 @@ In that case, you can use **Server-Side Rendering**. It will be slower, but the 
 
 > You might have noticed that each markdown file has a metadata section at the top containing `title` and `date`. This is called YAML Front Matter, which can be parsed using a library called [gray-matter](https://github.com/jonschlinkert/gray-matter).
 
-### Parsing the Blog Data on `getStaticProps`
+### Parsing the Blog Data on <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>
 
 Now, let’s update our index page (`pages/index.js`) using this data. We’d like to:
 
 - Parse each markdown file and get `title`, `date`, and file name (which will be used as `id` for the post URL).
 - List the data on the index page, sorted by date.
 
-To do this on pre-render, we need to implement `getStaticProps`.
+To do this on pre-render, we need to implement <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>.
 
 <Image
   shadow
