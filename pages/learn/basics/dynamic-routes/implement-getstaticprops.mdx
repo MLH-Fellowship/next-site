@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import Link from 'next/link'
 
 export const meta = {
   title: 'Dynamic Routes',
@@ -41,7 +42,7 @@ import { getAllPostIds } from '../../lib/posts'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 ```
 
-And create `getStaticProps` which calls this function:
+And create <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> which calls this function:
 
 ```jsx
 export async function getStaticProps({ params }) {

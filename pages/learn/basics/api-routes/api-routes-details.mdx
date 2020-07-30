@@ -11,11 +11,11 @@ export const meta = {
 
 You can get in-depth information about API Routes in <Link href="/docs/[[...slug]]" as="/docs/api-routes/dynamic-api-routes"><a>our documentation</a></Link>. But here is some essential information you should know about API Routes.
 
-### Do Not Fetch an API Route from `getStaticProps` or `getStaticPaths`
+### Do Not Fetch an API Route from <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> or <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link>
 
-You should **not** fetch an API Route from `getStaticProps` or `getStaticPaths`. Instead, write your server-side code directly in `getStaticProps` or `getStaticPaths` (or call a helper function).
+You should **not** fetch an API Route from<Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> or <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link>. Instead, write your server-side code directly in<Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> or <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> (or call a helper function).
 
-Here’s why: `getStaticProps` and `getStaticPaths` runs only on the server-side. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
+Here’s why:<Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> and <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> runs only on the server-side. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
 
 ### A Good Use Case: Handling Form Input
 

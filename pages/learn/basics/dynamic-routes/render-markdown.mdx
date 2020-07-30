@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import Link from 'next/link'
 
 export const meta = {
   title: 'Dynamic Routes',
@@ -49,7 +50,7 @@ export async function getPostData(id) {
 
 **Important**: We added the **`async`** keyword to `getPostData` because we need to use `await` for `remark`.
 
-That means we need to update `getStaticProps` in `pages/posts/[id].js` to use `await` when calling `getPostData`:
+That means we need to update <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> in `pages/posts/[id].js` to use `await` when calling `getPostData`:
 
 ```js
 export async function getStaticProps({ params }) {

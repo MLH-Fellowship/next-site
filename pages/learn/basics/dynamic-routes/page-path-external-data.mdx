@@ -46,7 +46,7 @@ export default function Post() {
 }
 ```
 
-Now, here’s what’s new: We’ll export an async function called `getStaticPaths` from this page. In this function, we need to return a list of **possible values** for `id`.
+Now, here’s what’s new: We’ll export an async function called <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> from this page. In this function, we need to return a list of **possible values** for `id`.
 
 ```jsx
 import Layout from '../../components/layout'
@@ -60,7 +60,7 @@ export async function getStaticPaths() {
 }
 ```
 
-Finally, we need to implement `getStaticProps` again - this time, to fetch necessary data for the blog post with a given `id`. `getStaticProps` is given `params`, which contains `id`.
+Finally, we need to implement <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> again - this time, to fetch necessary data for the blog post with a given `id`. <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> is given `params`, which contains `id`.
 
 ```jsx
 import Layout from '../../components/layout'
