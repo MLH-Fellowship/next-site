@@ -10,7 +10,24 @@ import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
-const Lesson = ({ course, lesson, selected }) => {
+const Step = ({ course, lesson, step, selected }) => {
+  return (
+    <li>
+      <Link href={`/learn/${course.id}/${lesson.id}/${step.id}`}>
+        {/* <a className={classNames('f5', { fw7: selected, selected, finished })}> */}
+        <a>
+          {/* <span className="step" title={`${finishedSteps} / ${totalSteps} finished`}> */}
+          {/* <span>{finished && <CheckIcon color="#0070F3" />}</span> */}
+          <span className="label">
+            {step.name} - {selected ? 'Selected' : null}
+          </span>
+        </a>
+      </Link>
+    </li>
+  );
+};
+
+const Lesson = ({ course, lesson, selected, meta }) => {
   const getRecord = useGetRecord();
 
   const steps = lesson.steps || [];
@@ -37,6 +54,21 @@ const Lesson = ({ course, lesson, selected }) => {
           <span className="label">{lesson.name}</span>
         </a>
       </Link>
+      {selected ? (
+        <ul>
+          {lesson.steps.map(step => (
+            <Step
+              key={step.id}
+              course={course}
+              lesson={lesson}
+              step={step}
+              selected={
+                meta.lessonId === lesson.id && meta.courseId === course.id && meta.stepId == step.id
+              }
+            />
+          ))}
+        </ul>
+      ) : null}
       <style jsx>{`
         li {
           list-style: none;
@@ -96,6 +128,7 @@ const Course = ({ course, meta }) => (
           key={lesson.id}
           course={course}
           lesson={lesson}
+          meta={meta}
           selected={meta.lessonId === lesson.id && meta.courseId === course.id}
         />
       ))}
