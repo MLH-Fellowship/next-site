@@ -10,19 +10,67 @@ import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
-const Step = ({ course, lesson, step, selected }) => {
+const Step = ({ course, lesson, step, selected, finishedSteps, totalSteps }) => {
+  // const totalSteps = steps.length;
+  const finished = true;
+  // const finished = totalSteps && finishedSteps === totalSteps;
   return (
     <li>
       <Link href={`/learn/${course.id}/${lesson.id}/${step.id}`}>
-        {/* <a className={classNames('f5', { fw7: selected, selected, finished })}> */}
-        <a>
-          {/* <span className="step" title={`${finishedSteps} / ${totalSteps} finished`}> */}
-          {/* <span>{finished && <CheckIcon color="#0070F3" />}</span> */}
-          <span className="label">
-            {step.name} - {selected ? 'Selected' : null}
+        <a className={classNames('f5', { fw7: selected, selected, finished })}>
+          <span className="step" title={`${finishedSteps} / ${totalSteps} finished`}>
+            {finished && <CheckIcon color="#0070F3" />}
           </span>
+          <span className="label">{step.name}</span>
         </a>
       </Link>
+
+      <style jsx>{`
+        li {
+          list-style: none;
+          margin: 12px 0;
+        }
+        a {
+          display: flex;
+          align-items: center;
+          color: unset;
+          text-decoration: none;
+        }
+        a:hover {
+          color: gray;
+        }
+        .step {
+          display: inline-block;
+          margin-left: -1.25rem;
+          margin-right: -7px;
+          width: 7px;
+          height: 7px;
+          min-width: 7px;
+          border-radius: 50%;
+          background: #efefef;
+          transform: translateX(-4px);
+          transition: background 0.5s ease;
+        }
+        .selected .step {
+          margin-right: -9px;
+          width: 9px;
+          height: 9px;
+          min-width: 9px;
+          background: #111;
+          transform: translateX(-5px);
+        }
+        .finished .step {
+          width: 16px;
+          height: 16px;
+          line-height: 16px;
+          margin-right: -16px;
+          background: white;
+          transform: translateX(-8px);
+        }
+        .label {
+          margin-left: 1.25rem;
+        }
+      `}</style>
     </li>
   );
 };
