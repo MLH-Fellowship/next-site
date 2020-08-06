@@ -10,8 +10,7 @@ import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
-const Step = ({ course, lesson, step, selected, finishedSteps, totalSteps }) => {
-  const finished = totalSteps && finishedSteps === totalSteps;
+const Step = ({ course, lesson, step, selected }) => {
   const getRecord = useGetRecord();
 
   const isStepFinished =
@@ -24,10 +23,8 @@ const Step = ({ course, lesson, step, selected, finishedSteps, totalSteps }) => 
   return (
     <li>
       <Link href={`/learn/${course.id}/${lesson.id}/${step.id}`}>
-        <a className={classNames('f5', { fw7: selected, selected, finished })}>
-          <span className="step" title={`${finishedSteps} / ${totalSteps} finished`}>
-            {isStepFinished && <CheckIcon color="#0070F3" />}
-          </span>
+        <a className={classNames('f5', { fw7: selected, selected, finished: isStepFinished })}>
+          <span className="step">{isStepFinished && <CheckIcon color="#0070F3" />}</span>
           <span className="label">{step.name}</span>
         </a>
       </Link>
@@ -84,7 +81,6 @@ const Step = ({ course, lesson, step, selected, finishedSteps, totalSteps }) => 
 const Lesson = ({ course, lesson, selected, meta }) => {
   const getRecord = useGetRecord();
 
-  debugger;
   const steps = lesson.steps || [];
   const finishedSteps = (
     steps.filter(
