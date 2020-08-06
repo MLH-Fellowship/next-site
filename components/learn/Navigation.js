@@ -11,15 +11,22 @@ import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
 const Step = ({ course, lesson, step, selected, finishedSteps, totalSteps }) => {
-  // const totalSteps = steps.length;
-  const finished = true;
-  // const finished = totalSteps && finishedSteps === totalSteps;
+  const finished = totalSteps && finishedSteps === totalSteps;
+  const getRecord = useGetRecord();
+
+  const isStepFinished =
+    getRecord({
+      courseId: course.id,
+      lessonId: lesson.id,
+      stepId: step.id
+    }).visited || false;
+
   return (
     <li>
       <Link href={`/learn/${course.id}/${lesson.id}/${step.id}`}>
         <a className={classNames('f5', { fw7: selected, selected, finished })}>
           <span className="step" title={`${finishedSteps} / ${totalSteps} finished`}>
-            {finished && <CheckIcon color="#0070F3" />}
+            {isStepFinished && <CheckIcon color="#0070F3" />}
           </span>
           <span className="label">{step.name}</span>
         </a>
@@ -56,7 +63,6 @@ const Step = ({ course, lesson, step, selected, finishedSteps, totalSteps }) => 
           width: 9px;
           height: 9px;
           min-width: 9px;
-          background: #111;
           transform: translateX(-5px);
         }
         .finished .step {
@@ -78,6 +84,7 @@ const Step = ({ course, lesson, step, selected, finishedSteps, totalSteps }) => 
 const Lesson = ({ course, lesson, selected, meta }) => {
   const getRecord = useGetRecord();
 
+  debugger;
   const steps = lesson.steps || [];
   const finishedSteps = (
     steps.filter(
@@ -109,6 +116,8 @@ const Lesson = ({ course, lesson, selected, meta }) => {
               key={step.id}
               course={course}
               lesson={lesson}
+              totalSteps={totalSteps}
+              finishedSteps={finishedSteps}
               step={step}
               selected={
                 meta.lessonId === lesson.id && meta.courseId === course.id && meta.stepId == step.id
