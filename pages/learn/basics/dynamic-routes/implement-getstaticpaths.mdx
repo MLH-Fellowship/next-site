@@ -1,6 +1,5 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
-import Link from 'next/link'
 
 export const meta = {
   title: 'Dynamic Routes',
@@ -54,7 +53,7 @@ export function getAllPostIds() {
 }
 ```
 
-**Important**: The returned list is _not_ just an array of strings — it **must** be an array of objects that look like the comment above. Each object must have the `params` key and contain an object with the `id` key (because we’re using `[id]` in the file name). Otherwise, <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> will fail.
+**Important**: The returned list is _not_ just an array of strings — it **must** be an array of objects that look like the comment above. Each object must have the `params` key and contain an object with the `id` key (because we’re using `[id]` in the file name). Otherwise, [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) will fail.
 
 Finally, in `pages/posts/[id].js`, we’ll import this function:
 
@@ -62,7 +61,7 @@ Finally, in `pages/posts/[id].js`, we’ll import this function:
 import { getAllPostIds } from '../../lib/posts'
 ```
 
-And create <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> which calls this function:
+And create [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) which calls this function:
 
 ```jsx
 export async function getStaticPaths() {
@@ -77,6 +76,6 @@ export async function getStaticPaths() {
 - The array of possible values for `id` must be the value of the `paths` key of the returned object. This is exactly what `getAllPostIds()` returns.
 - Ignore `fallback: false` for now — we’ll explain that later.
 
-We’re almost done — but we still need to implement <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>. Let’s do that on the next page!
+We’re almost done — but we still need to implement [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation). Let’s do that on the next page!
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

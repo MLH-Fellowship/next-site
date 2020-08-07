@@ -1,5 +1,4 @@
 import Layout from '../../../../components/learn/Layout'
-import Link from 'next/link'
 
 export const meta = {
   title: 'Dynamic Routes',
@@ -11,18 +10,14 @@ export const meta = {
 
 You can get in-depth information about dynamic routes in our documentation:
 
-- <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching">
-    <a>Data Fetching</a>
-  </Link>
-- <Link href="/docs/[[...slug]]" as="/docs/routing/dynamic-routes">
-    <a>Dynamic Routes</a>
-  </Link>
+- [Data Fetching](/docs/basic-features/data-fetching)
+- [Dynamic Routes](/docs/routing/dynamic-routes)
 
 But here is some essential information you should know about dynamic routes.
 
 ### Fetch External API or Query Database
 
-Like <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>, <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> can fetch data from any data source. In our example, `getAllPostIds` (which is used by <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link>) may fetch from an external API endpoint:
+Like [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation), [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) can fetch data from any data source. In our example, `getAllPostIds` (which is used by [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation)) may fetch from an external API endpoint:
 
 ```js
 export async function getAllPostIds() {
@@ -42,22 +37,22 @@ export async function getAllPostIds() {
 
 ### Development v.s. Production
 
-- In **development** (`npm run dev` or `yarn dev`), <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> runs on _every request_.
-- In **production**, <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> runs at _build time_.
+- In **development** (`npm run dev` or `yarn dev`), [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) runs on _every request_.
+- In **production**, [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) runs at _build time_.
 
 ### Fallback
 
-Recall that we returned `fallback: false` from <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link>. What does this mean?
+Recall that we returned `fallback: false` from [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation). What does this mean?
 
-If `fallback` is `false`, then any paths not returned by <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> will result in a **404 page**.
+If `fallback` is `false`, then any paths not returned by [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) will result in a **404 page**.
 
-If `fallback` is `true`, then the behavior of <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> changes:
+If `fallback` is `true`, then the behavior of [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) changes:
 
-- The paths returned from <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> will be rendered to HTML at build time.
+- The paths returned from [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) will be rendered to HTML at build time.
 - The paths that have not been generated at build time will **not** result in a 404 page. Instead, Next.js will serve a “fallback” version of the page on the first request to such a path.
 - In the background, Next.js will statically generate the requested path. Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.
 
-This is beyond the scope of our lessons, but you can learn more about `fallback: true` in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#fallback-pages"><a>our documentation</a></Link>.
+This is beyond the scope of our lessons, but you can learn more about `fallback: true` in [our documentation](/docs/basic-features/data-fetching#fallback-pages).
 
 ### Catch-all Routes
 
@@ -65,7 +60,7 @@ Dynamic routes can be extended to catch all paths by adding three dots (`...`) i
 
 - `pages/posts/[...id].js` matches `/posts/a`, but also `/posts/a/b`, `/posts/a/b/c` and so on.
 
-If you do this, in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link>, you must return an array as the value of the `id` key like so:
+If you do this, in [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation), you must return an array as the value of the `id` key like so:
 
 ```js
 return [
@@ -79,7 +74,7 @@ return [
 ]
 ```
 
-And `params.id` will be an array in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>:
+And `params.id` will be an array in [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation):
 
 ```js
 export async function getStaticProps({ params }) {
@@ -87,11 +82,11 @@ export async function getStaticProps({ params }) {
 }
 ```
 
-Take a look at our <Link href="/docs/[[...slug]]" as="/docs/routing/dynamic-routes"><a>Dynamic Routes</a></Link> documentation to learn more.
+Take a look at our [Dynamic Routes](/docs/routing/dynamic-routes) documentation to learn more.
 
 ### Router
 
-If you want to access the Next.js router, you can do so by importing the `useRouter` hook from `next/router`. Take a look at our <Link href="/docs/[[...slug]]" as="/docs/routing/dynamic-routes"><a>router documentation</a></Link> to learn more.
+If you want to access the Next.js router, you can do so by importing the `useRouter` hook from `next/router`. Take a look at our [router documentation](/docs/routing/dynamic-routes) to learn more.
 
 ### 404 Pages
 
@@ -104,11 +99,11 @@ export default function Custom404() {
 }
 ```
 
-Take a look at our <Link href="/docs/[[...slug]]" as="/docs/advanced-features/custom-error-page#404-page"><a>Error Pages</a></Link> documentation to learn more.
+Take a look at our [Error Pages](/docs/advanced-features/custom-error-page#404-page) documentation to learn more.
 
 ### More Examples
 
-We have created several examples to illustrate <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> and <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticpaths-static-generation"><a>`getStaticPaths`</a></Link> — take a look at their source code to learn more:
+We have created several examples to illustrate [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) and [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) — take a look at their source code to learn more:
 
 - [Blog Starter using markdown files](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) ([Demo](https://next-blog-starter.now.sh/))
 - [DatoCMS Example](https://github.com/vercel/next.js/tree/canary/examples/cms-datocms) ([Demo](https://next-blog-datocms.now.sh/))

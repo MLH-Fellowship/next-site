@@ -1,5 +1,4 @@
 import Layout from '../../../../components/learn/Layout'
-import Link from 'next/link'
 import Image from '../../../../components/image'
 
 export const meta = {
@@ -10,7 +9,7 @@ export const meta = {
   subtitle: 'Fetching Data at Request Time'
 }
 
-If you need to fetch data at **request time** instead of at build time, you can try <Link href="/docs/[[...slug]]" as="/docs/basic-features/pages#server-side-rendering"><a>**Server-side Rendering**</a></Link>:
+If you need to fetch data at **request time** instead of at build time, you can try [**Server-side Rendering**](/docs/basic-features/pages#server-side-rendering):
 
 <Image
   shadow
@@ -21,11 +20,11 @@ If you need to fetch data at **request time** instead of at build time, you can 
   height={1050 / 2}
 />
 
-To use <Link href="/docs/[[...slug]]" as="/docs/basic-features/pages#server-side-rendering"><a>Server-side Rendering</a></Link>, you need to export <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>`getServerSideProps`</a></Link> instead of <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> from your page.
+To use [Server-side Rendering](/docs/basic-features/pages#server-side-rendering), you need to export [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) instead of [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) from your page.
 
-### Using <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>`getServerSideProps`</a></Link>
+### Using [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering)
 
-Here’s the starter code for <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>`getServerSideProps`</a></Link>. It’s not necessary for our blog example, so we won’t be implementing it.
+Here’s the starter code for [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering). It’s not necessary for our blog example, so we won’t be implementing it.
 
 ```jsx
 export async function getServerSideProps(context) {
@@ -37,9 +36,9 @@ export async function getServerSideProps(context) {
 }
 ```
 
-Because <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>`getServerSideProps`</a></Link> is called at request time, its parameter (`context`) contains request specific parameters. You can learn more in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>our documentation</a></Link>.
+Because [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) is called at request time, its parameter (`context`) contains request specific parameters. You can learn more in [our documentation](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering).
 
-You should use <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>`getServerSideProps`</a></Link> only if you need to pre-render a page whose data must be fetched at request time. Time to first byte (TTFB) will be slower than <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
+You should use [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) only if you need to pre-render a page whose data must be fetched at request time. Time to first byte (TTFB) will be slower than [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
 
 ### Client-side Rendering
 
@@ -81,6 +80,6 @@ function Profile() {
 
 In the next lesson, we’ll create pages for each blog post using **dynamic routes**.
 
-> Again, you can get in-depth information about <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> and <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>`getServerSideProps`</a></Link> in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching"><a>our documentation</a></Link>.
+> Again, you can get in-depth information about [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) and [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) in [our documentation](/docs/basic-features/data-fetching).
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

@@ -1,6 +1,5 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
-import Link from 'next/link'
 
 export const meta = {
   title: 'Dynamic Routes',
@@ -12,7 +11,7 @@ export const meta = {
 
 ### Adding `title` to the Post Page
 
-In `pages/posts/[id].js`, let’s add the `title` tag using the post data. Import <Link href="/docs/[[...slug]]" as="/docs/api-reference/next/head"><a>`next/head`</a></Link> and add the `title` tag:
+In `pages/posts/[id].js`, let’s add the `title` tag using the post data. Import [`next/head`](/docs/api-reference/next/head) and add the `title` tag:
 
 ```jsx
 import Head from 'next/head'

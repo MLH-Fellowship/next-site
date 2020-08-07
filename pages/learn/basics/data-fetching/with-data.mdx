@@ -1,6 +1,5 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
-import Link from 'next/link'
 
 export const meta = {
   title: 'Pre-rendering and Data Fetching',
@@ -34,16 +33,11 @@ However, for some pages, you might not be able to render the HTML without first 
   height={1050 / 2}
 />
 
-### Static Generation with Data using <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>
+### Static Generation with Data using [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation)
 
-How does it work? Well, in Next.js, when you export a page component, you can also export an `async` function called <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>. If you do this, then:
+How does it work? Well, in Next.js, when you export a page component, you can also export an `async` function called [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation). If you do this, then:
 
-- <Link
-    href="/docs/[[...slug]]"
-    as="/docs/basic-features/data-fetching#getstaticprops-static-generation"
-  >
-    <a>`getStaticProps`</a>
-  </Link> runs at build time in production, and…
+- [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) runs at build time in production, and…
 - Inside the function, you can fetch external data and pass that as the props of the page.
 
 ```jsx
@@ -61,12 +55,12 @@ export async function getStaticProps() {
 }
 ```
 
-Essentially, <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> allows you to tell Next.js: _“Hey, this page has some data dependencies — so when you pre-render this page at build time, make sure to resolve them first!”_
+Essentially, [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) allows you to tell Next.js: _“Hey, this page has some data dependencies — so when you pre-render this page at build time, make sure to resolve them first!”_
 
-> **Note**: In development mode, <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> runs on each request instead.
+> **Note**: In development mode, [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) runs on each request instead.
 
-### Let’s Use <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link>
+### Let’s Use [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation)
 
-It’s easier to learn by doing, so starting from the next page, we’ll use <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getstaticprops-static-generation"><a>`getStaticProps`</a></Link> to implement our blog.
+It’s easier to learn by doing, so starting from the next page, we’ll use [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) to implement our blog.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>
