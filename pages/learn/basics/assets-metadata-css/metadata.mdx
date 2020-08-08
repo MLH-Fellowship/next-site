@@ -27,7 +27,7 @@ Notice that `<Head>` is used instead of the lowercase `<head>`. `<Head>` is a Re
 
 You can import the `Head` component from the [`next/head`](/docs/api-reference/next/head) module.
 
-### Adding `<Head>` to `first-post.js`
+### Adding `Head` to `first-post.js`
 
 We haven't added a `<title>` to our `/posts/first-post` route. Let's add one.
 
@@ -56,8 +56,8 @@ export default function FirstPost() {
 
 Try accessing [http://localhost:3000/posts/first-post](http://localhost:3000/posts/first-post). The browser tab should now say “First Post”. By using your browser’s developer tools, you should see that the `title` tag is added to `<head>`.
 
-> To learn more about `next/head`, check out [the API reference documentation](/docs/api-reference/next/head).
+> To learn more about the `Head` component, check out the [API reference for `next/head`](/docs/api-reference/next/head).
 >
-> If you want to customize the `<html>`, for example to add the `lang` attribute, you can do so by creating a custom `Document` component. Learn more in [the custom document documentation](/docs/advanced-features/custom-document).
+> If you want to customize the `<html>`, for example to add the `lang` attribute, you can do so by creating a `pages/_document.js` file. Learn more in the [custom `Document` documentation](/docs/advanced-features/custom-document).
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>
