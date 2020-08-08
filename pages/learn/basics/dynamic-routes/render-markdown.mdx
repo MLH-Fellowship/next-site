@@ -9,7 +9,7 @@ export const meta = {
   subtitle: 'Render Markdown'
 }
 
-To render markdown content, we’ll use the `remark` library. First, let’s install it:
+To render markdown content, we’ll use the [`remark`](https://github.com/remarkjs/remark) library. First, let’s install it:
 
 ```shell
 npm install remark remark-html
@@ -22,7 +22,7 @@ import remark from 'remark'
 import html from 'remark-html'
 ```
 
-And update `getPostData()` as follows to use `remark`.
+And update `getPostData()` as follows to use `remark`:
 
 ```js
 export async function getPostData(id) {

@@ -73,8 +73,8 @@ export async function getStaticPaths() {
 }
 ```
 
-- The array of possible values for `id` must be the value of the `paths` key of the returned object. This is exactly what `getAllPostIds()` returns.
-- Ignore `fallback: false` for now — we’ll explain that later.
+- The array of possible values for `id` must be the value of the [`paths` key](/docs/basic-features/data-fetching#the-paths-key-required) of the returned object. This is exactly what `getAllPostIds()` returns.
+- Ignore [`fallback: false`](/docs/basic-features/data-fetching#fallback-false) for now — we’ll explain that later.
 
 We’re almost done — but we still need to implement [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation). Let’s do that on the next page!
 
