@@ -8,9 +8,9 @@ export const meta = {
   subtitle: 'API Routes Details'
 }
 
-You can get in-depth information about API Routes in [our documentation](/docs/api-routes/dynamic-api-routes). But here is some essential information you should know about API Routes.
+Here is some essential information you should know about [API Routes](/docs/api-routes/introduction).
 
-### Do Not Fetch an API Route from [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) or [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation)
+### Do Not Fetch an API Route from `getStaticProps` or `getStaticPaths`
 
 You should **not** fetch an API Route from [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) or [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation). Instead, write your server-side code directly in [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) or [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation) (or call a helper function).
 
@@ -29,9 +29,9 @@ export default (req, res) => {
 
 ### Preview Mode
 
-Static Generation is useful when your pages fetch data from a headless CMS. However, it’s not ideal when you’re writing a draft on your headless CMS and want to **preview** the draft immediately on your page. You’d want Next.js to render these pages at **request time** instead of build time and fetch the draft content instead of the published content. You’d want Next.js to bypass Static Generation only for this specific case.
+[Static Generation](/docs/basic-features/pages#static-generation-recommended) is useful when your pages fetch data from a headless CMS. However, it’s not ideal when you’re writing a draft on your headless CMS and want to **preview** the draft immediately on your page. You’d want Next.js to render these pages at **request time** instead of build time and fetch the draft content instead of the published content. You’d want Next.js to bypass Static Generation only for this specific case.
 
-Next.js has the feature called **Preview Mode** which solves this problem, and it utilizes API Routes. To learn more, take a look at our [Preview Mode](/docs/advanced-features/preview-mode) documentation.
+Next.js has a feature called **Preview Mode** to solve the problem above, and it utilizes [API Routes](/docs/api-routes/introduction). To learn more about it take a look at our [Preview Mode](/docs/advanced-features/preview-mode) documentation.
 
 ### Dynamic API Routes
 
