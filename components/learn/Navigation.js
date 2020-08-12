@@ -67,6 +67,7 @@ const Step = ({ href, children, selected, finished, title, label }) => {
           transform: translateX(-8px);
         }
         .label {
+          width: 100%;
           margin-left: 1.25rem;
         }
       `}</style>
@@ -259,6 +260,7 @@ const Navigation = ({ meta, isMobile }) => {
         ))}
         <style jsx>{`
           .navigation-area {
+            width: 264px;
             display: flex;
             flex-direction: column;
           }
