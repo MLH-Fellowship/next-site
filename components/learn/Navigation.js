@@ -10,118 +10,20 @@ import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
-const Step = ({ course, lesson, step, selected }) => {
-  const getRecord = useGetRecord();
-
-  const isStepFinished =
-    getRecord({
-      courseId: course.id,
-      lessonId: lesson.id,
-      stepId: step.id
-    }).visited || false;
-
+const Step = ({ href, children, selected, finished, title, label }) => {
   return (
     <li>
-      <Link href={`/learn/${course.id}/${lesson.id}/${step.id}`}>
-        <a className={classNames('f5', { fw7: selected, selected, finished: isStepFinished })}>
-          <span className="step">{isStepFinished && <CheckIcon color="#0070F3" />}</span>
-          <span className="label">{step.name}</span>
-        </a>
-      </Link>
-
-      <style jsx>{`
-        li {
-          list-style: none;
-          margin: 12px 0;
-        }
-        a {
-          display: flex;
-          align-items: center;
-          color: unset;
-          text-decoration: none;
-        }
-        a:hover {
-          color: gray;
-        }
-        .step {
-          display: inline-block;
-          margin-left: -1.25rem;
-          margin-right: -7px;
-          width: 7px;
-          height: 7px;
-          min-width: 7px;
-          border-radius: 50%;
-          background: #efefef;
-          transform: translateX(-4px);
-          transition: background 0.5s ease;
-        }
-        .selected .step {
-          margin-right: -9px;
-          width: 9px;
-          height: 9px;
-          min-width: 9px;
-          transform: translateX(-5px);
-        }
-        .finished .step {
-          width: 16px;
-          height: 16px;
-          line-height: 16px;
-          margin-right: -16px;
-          background: white;
-          transform: translateX(-8px);
-        }
-        .label {
-          margin-left: 1.25rem;
-        }
-      `}</style>
-    </li>
-  );
-};
-
-const Lesson = ({ course, lesson, selected, meta }) => {
-  const getRecord = useGetRecord();
-
-  const steps = lesson.steps || [];
-  const finishedSteps = (
-    steps.filter(
-      step =>
-        getRecord({
-          courseId: course.id,
-          lessonId: lesson.id,
-          stepId: step.id
-        }).visited
-    ) || []
-  ).length;
-  const totalSteps = steps.length;
-  const finished = totalSteps && finishedSteps === totalSteps;
-
-  return (
-    <li>
-      <Link href={`/learn/${course.id}/${lesson.id}`}>
+      <Link href={href}>
         <a className={classNames('f5', { fw7: selected, selected, finished })}>
-          <span className="step" title={`${finishedSteps} / ${totalSteps} finished`}>
+          <span className="step" title={title}>
             {finished && <CheckIcon color="#0070F3" />}
           </span>
-          <span className="label">{lesson.name}</span>
+          <span className="label">{label}</span>
         </a>
       </Link>
-      {selected ? (
-        <ul>
-          {lesson.steps.map(step => (
-            <Step
-              key={step.id}
-              course={course}
-              lesson={lesson}
-              totalSteps={totalSteps}
-              finishedSteps={finishedSteps}
-              step={step}
-              selected={
-                meta.lessonId === lesson.id && meta.courseId === course.id && meta.stepId == step.id
-              }
-            />
-          ))}
-        </ul>
-      ) : null}
+
+      {children}
+
       <style jsx>{`
         li {
           list-style: none;
@@ -169,6 +71,55 @@ const Lesson = ({ course, lesson, selected, meta }) => {
         }
       `}</style>
     </li>
+  );
+};
+
+const Lesson = ({ course, lesson, selected, meta }) => {
+  const getRecord = useGetRecord();
+  const href = `/learn/${course.id}/${lesson.id}`;
+  const steps = lesson.steps || [];
+  const finishedSteps = steps.filter(
+    step =>
+      getRecord({
+        courseId: course.id,
+        lessonId: lesson.id,
+        stepId: step.id
+      }).visited
+  );
+  const totalSteps = steps.length;
+  const finished = totalSteps && finishedSteps.length === totalSteps;
+
+  return (
+    <Step
+      href={href}
+      selected={selected}
+      finished={finished}
+      title={`${finishedSteps.length} / ${totalSteps} finished`}
+      label={lesson.name}
+    >
+      {selected && (
+        <ul>
+          {lesson.steps.map(step => (
+            <Step
+              key={step.id}
+              href={`${href}/${step.id}`}
+              selected={meta.stepId === step.id}
+              finished={finishedSteps.some(({ id }) => id === step.id)}
+              title={step.name}
+              label={step.name}
+            />
+          ))}
+        </ul>
+      )}
+
+      <style jsx>{`
+        ul {
+          padding: 0;
+          padding-left: 1.5rem;
+          margin: 0;
+        }
+      `}</style>
+    </Step>
   );
 };
 
